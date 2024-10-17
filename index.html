@@ -4,29 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magnus Damsgaard</title>
-    <link rel="stylesheet" href="index.css">
+    <script defer src="js/script.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <header id="header"></header>
-    <script>
-        fetch('header.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('header').innerHTML = html;
-            });
-    </script>
+    <header>
+        <a href="index.html"><img src="img/md_logo.svg" alt="Logo"></a>
+        <input id="checkbox" type="checkbox">
+            <label class="toggle" for="checkbox">
+                <div id="bar1" class="bars"></div>
+                <div id="bar2" class="bars"></div>
+                <div id="bar3" class="bars"></div>
+            </label>
+        <nav class="menu-context">
+            <ul>
+                <li></li>
+                <li><a href="index.html">Hjem</a></li>
+                <li><a href="about.html">Subsider</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+                <li>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- <?php include 'header.php'; ?> -->
 
     <main>
-        <div style="background-color: blue; width: 400px; height: 400px;"></div>
+        <section>
+            <h1>Home</h1>
+            <p>Welcome to my website. My name is Magnus Damsgaard and I am a web developer.</p>
+        </section>
     </main>
 
-    <footer id="footer"></footer>
-    <script>
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('footer').innerHTML = html;
-            });
-    </script>
+    <!-- <?php include 'header.php'; ?> -->
 </body>
 </html>
