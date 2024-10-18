@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magnus Damsgaard</title>
-    <script defer src="js/script.js"></script>
+    <script defer src="js/theme-changer.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-        <a href="index.html"><img src="img/md_logo.svg" alt="Logo"></a>
+        <a href="index.html"><img id="logo" src="img/md_logo_dark.svg" alt="Logo"></a>
         <input id="checkbox" type="checkbox">
             <label class="toggle" for="checkbox">
                 <div id="bar1" class="bars"></div>
@@ -21,21 +21,24 @@
             </label>
         <nav class="menu-context">
             <ul>
-                <li></li>
                 <li><a href="index.html">Hjem</a></li>
                 <li><a href="about.html">Subsider</a></li>
                 <li><a href="contact.html">Kontakt</a></li>
-                <li>
-                </li>
             </ul>
+            <label id="switch">
+                <input id="theme-toggle" type="checkbox">
+                <span class="slider"></span>
+            </label>
         </nav>
     </header>
     <!-- <?php include 'header.php'; ?> -->
 
     <main>
         <section>
-            <h1>Home</h1>
-            <p>Welcome to my website. My name is Magnus Damsgaard and I am a web developer.</p>
+            <h1>Hello</h1>
+        </section>
+        <section>
+            
         </section>
     </main>
 

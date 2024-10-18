@@ -1,63 +1,34 @@
 header {
-    background-color: var(--secondary);
-    background-color: #0028dc;
-    color: var(--tertiary);
+    background-color: var(--dark);
     top: 0;
     position: sticky;
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 8dvh 92dvh;
     width: 100dvw;
     min-height: 8dvh;
     height: 8dvh;
+    box-shadow: 0px 10px 20px 8px rgba(0,0,0,0.25), 0px 3px 14px 4px rgba(0,0,0,0.15);
 
-    & a {
+    &>a {
+        grid-area: 1 / 1 / 2 / 2;
         height: 100%;
-        color: var(--tertiary);
-
-        & img {
+        
+        & #logo {
             height: 100%;
             width: auto;
             padding: 1vw 0 1vw 1vw;
         }
-    }
-
-    & nav {
-        height: 100%;
-        width: 100%;
-        display: none;
-        justify-content: space-between;
-
-        & ul {
-            all: inherit;
-            height: 100%;
-
-            & li {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                list-style: none;
-                height: 100%;
-
-                & a {
-                    height: 100%;
-                    color: var(--tertiary);
-                    color: white;
-                }
-            }
-        }
-    }
-
+    }    
 }
-
-
 
 #checkbox {
     display: none;
 }
 
 .toggle {
+    grid-area: 1 / 2 / 2 / 3;
+    justify-self: end;
     margin-right: 3vw;
     position: relative;
     width: 2.5rem;
@@ -74,13 +45,13 @@ header {
 .bars {
     width: 100%;
     height: 0.25rem;
-    background-color: #FFF;
-    border-radius: 25%;
+    background-color: var(--light);
+    border-radius: 10px;
     transition-duration: .3s;
 }
 
 #checkbox:checked+.toggle #bar2 {
-    transform: translateY(13px) rotate(60deg);
+    transform: translateX(-0.5px) translateY(13px) rotate(60deg);
     margin-left: 0;
     transform-origin: right;
     transition-duration: .3s;
@@ -88,12 +59,109 @@ header {
 }
 
 #checkbox:checked+.toggle #bar1 {
-    transform: translateY(25px) rotate(-60deg);
+    transform: translateX(0.5px) translateY(25px) rotate(-60deg);
     transition-duration: .3s;
     transform-origin: left;
     z-index: 1;
 }
 
+#checkbox:checked+.toggle .bars {
+    border-radius: 25px;
+    background-color: var(--light);
+    transition-duration: .3s;
+}
+
 #checkbox:checked ~ .menu-context {
-    display: flex;
+    height: 92dvh;
+}
+
+.menu-context {
+    grid-area: 2 / 1 / 3 / 3;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100dvw; 
+    height: 0;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 4em;
+    background-color: var(--dark);
+    transition: height .3s ease-in-out;
+    
+    & ul {
+        grid-area: 1 / 2 / 2 / 3;
+        margin: 2rem 0 0 0;
+        
+        & li {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            height: fit-content;
+            padding: 0.5rem;
+            width: 100%;
+            
+            & a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: var(--light);
+                height: 100%;
+                width: 100%;
+                font-size: 2rem;
+            }
+        }
+    }
+
+    & #switch {
+        grid-area: 2 / 3 / 3 / 4;
+        align-self: flex-end;
+        justify-self: flex-end;
+        margin: 0 1.5rem 1.5rem 0;
+        position: relative;        
+        width: 3.5em;
+        height: 2em;
+
+        & #theme-toggle {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        & .slider { /* In light mode - switch to dark */
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #1b1b1b; /* pillens baggrund */
+            transition: .5s;
+            border-radius: 30px;
+            border: #3f3c3c solid 2px; /* månens kant */
+            
+            &:before { /* In light mode - switch to dark */
+                position: absolute;
+                content: "";
+                height: 1.3em;
+                width: 1.3em;
+                border-radius: 50%;
+                left: 10%;
+                bottom: 15%;
+                box-shadow: inset 8px -4px 0px 0px #A34B14; /* månen */
+                background: #1b1b1b; /* månens baggrund - skal væred det samme som pillen */
+                transition: .5s;
+            }
+        }
+        
+        & #theme-toggle:checked + .slider { /* In dark mode - switch to light */
+            background-color: #4ebbff; /* pillens baggrund in dark mode */
+            border: #FFF4E4 solid 2px; /* månens kant */
+        }
+          
+        & #theme-toggle:checked + .slider:before {
+            transform: translateX(100%);
+            box-shadow: inset 15px -4px 0px 15px #d5c000; /* solen */
+        }
+    }
 }
