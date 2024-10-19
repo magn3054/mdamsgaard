@@ -17,12 +17,12 @@ header {
         & #logo {
             height: 100%;
             width: auto;
-            padding: 1vw 0 1vw 1vw;
+            padding: 1% 0 1% 1%;
         }
     }    
 }
 
-#checkbox {
+#burger {
     display: none;
 }
 
@@ -50,7 +50,7 @@ header {
     transition-duration: .3s;
 }
 
-#checkbox:checked+.toggle #bar2 {
+#burger:checked+.toggle #bar2 {
     transform: translateX(-0.5px) translateY(13px) rotate(60deg);
     margin-left: 0;
     transform-origin: right;
@@ -58,20 +58,20 @@ header {
     z-index: 2;
 }
 
-#checkbox:checked+.toggle #bar1 {
+#burger:checked+.toggle #bar1 {
     transform: translateX(0.5px) translateY(25px) rotate(-60deg);
     transition-duration: .3s;
     transform-origin: left;
     z-index: 1;
 }
 
-#checkbox:checked+.toggle .bars {
+#burger:checked+.toggle .bars {
     border-radius: 25px;
     background-color: var(--light);
     transition-duration: .3s;
 }
 
-#checkbox:checked ~ .menu-context {
+#burger:checked ~ .menu-context {
     height: 92dvh;
 }
 
@@ -113,7 +113,7 @@ header {
         }
     }
 
-    & #switch {
+    & .switch {
         grid-area: 2 / 3 / 3 / 4;
         align-self: flex-end;
         justify-self: flex-end;
@@ -122,7 +122,7 @@ header {
         width: 3.5em;
         height: 2em;
 
-        & #theme-toggle {
+        & .theme-toggle {
             opacity: 0;
             width: 0;
             height: 0;
@@ -154,14 +154,62 @@ header {
             }
         }
         
-        & #theme-toggle:checked + .slider { /* In dark mode - switch to light */
+        & .theme-toggle:checked + .slider { /* In dark mode - switch to light */
             background-color: #4ebbff; /* pillens baggrund in dark mode */
             border: #FFF4E4 solid 2px; /* månens kant */
         }
           
-        & #theme-toggle:checked + .slider:before {
+        & .theme-toggle:checked + .slider:before {
             transform: translateX(100%);
             box-shadow: inset 15px -4px 0px 15px #d5c000; /* solen */
         }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    header {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 8dvh;
+        align-content: center;
+        justify-content: center;
+    }
+
+    #logo {
+        grid-area: 1 / 1 / 2 / 2;
+        padding: 1% 0 1% 1%;
+    }
+
+    .toggle { /* tre barer */
+        display: none;
+    }
+
+    .menu-context {
+        grid-area: 1 / 1 / 2 / 4;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        height: 100%;
+        width: 100%;
+        background-color: transparent;
+
+        & ul {
+            grid-area: 1 / 2 / 1 / 3;
+            margin: 0;
+            display: flex;
+        }
+
+        & .switch {
+            display: none;
+            /* margin: 0 50px 0 0;
+            grid-area: 1 / 3 / 1 / 4;
+            align-self: center;
+            justify-self: center; */
+        }
+    }
+
+    .menu-context .switch {
+        grid-area: 1 / 4 / 2 / 5;
+        margin: 0;
     }
 }

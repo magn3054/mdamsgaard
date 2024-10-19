@@ -1,6 +1,6 @@
 "use strict";
 
-const toggleCheckbox = document.querySelector('#theme-toggle'); // Get the checkbox input
+const toggleCheckbox = document.querySelector('.theme-toggle'); // Get the checkbox input
 const logo = document.getElementById('logo'); // Get the logo element
 const currentTheme = localStorage.getItem('theme');
 
