@@ -86,19 +86,9 @@ body {
 a {
     text-decoration: none;
     color: var(--tertiary);
+    cursor: default;
 }
 
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-      --background-color: #121212;
-      --text-color: #ffffff;
-  }
+li {
+    list-style: none;
 }
-
-@media (prefers-color-scheme: light) {
-  :root {
-      --background-color: white;
-      --text-color: black;
-  }
-} */

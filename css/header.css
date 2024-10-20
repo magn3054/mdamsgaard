@@ -9,22 +9,25 @@ header {
     min-height: 8dvh;
     height: 8dvh;
     box-shadow: 0px 10px 20px 8px rgba(0,0,0,0.25), 0px 3px 14px 4px rgba(0,0,0,0.15);
+}
 
-    &>a {
-        grid-area: 1 / 1 / 2 / 2;
+a:has(> img#logo) {
+    grid-area: 1 / 1 / 2 / 2;
+    height: 100%;
+    z-index: 2;
+    
+    & #logo {
+        cursor: pointer;
         height: 100%;
-        
-        & #logo {
-            height: 100%;
-            width: auto;
-            padding: 1% 0 1% 1%;
-        }
-    }    
-}
+        width: auto;
+        padding: 1%;
+        cursor: pointer;
+    }
+}    
 
-#burger {
+.settings-container, #burger {
     display: none;
-}
+}    
 
 .toggle {
     grid-area: 1 / 2 / 2 / 3;
@@ -96,10 +99,12 @@ header {
             display: flex;
             justify-content: center;
             align-items: center;
+            align-self: center;
             list-style: none;
             height: fit-content;
-            padding: 0.5rem;
             width: 100%;
+            height: 100%;
+            /* margin: 0 1rem; */
             
             & a {
                 display: flex;
@@ -109,11 +114,12 @@ header {
                 height: 100%;
                 width: 100%;
                 font-size: 2rem;
+                cursor: pointer;
             }
         }
     }
 
-    & .switch {
+    & .mobile-switch {
         grid-area: 2 / 3 / 3 / 4;
         align-self: flex-end;
         justify-self: flex-end;
@@ -121,49 +127,49 @@ header {
         position: relative;        
         width: 3.5em;
         height: 2em;
+    }    
+}
 
-        & .theme-toggle {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
+.theme-toggle {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
 
-        & .slider { /* In light mode - switch to dark */
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #1b1b1b; /* pillens baggrund */
-            transition: .5s;
-            border-radius: 30px;
-            border: #3f3c3c solid 2px; /* månens kant */
-            
-            &:before { /* In light mode - switch to dark */
-                position: absolute;
-                content: "";
-                height: 1.3em;
-                width: 1.3em;
-                border-radius: 50%;
-                left: 10%;
-                bottom: 15%;
-                box-shadow: inset 8px -4px 0px 0px #A34B14; /* månen */
-                background: #1b1b1b; /* månens baggrund - skal væred det samme som pillen */
-                transition: .5s;
-            }
-        }
-        
-        & .theme-toggle:checked + .slider { /* In dark mode - switch to light */
-            background-color: #4ebbff; /* pillens baggrund in dark mode */
-            border: #FFF4E4 solid 2px; /* månens kant */
-        }
-          
-        & .theme-toggle:checked + .slider:before {
-            transform: translateX(100%);
-            box-shadow: inset 15px -4px 0px 15px #d5c000; /* solen */
-        }
+.slider { /* In light mode - switch to dark */
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #1b1b1b; /* pillens baggrund */
+    transition: .5s;
+    border-radius: 30px;
+    border: #3f3c3c solid 2px; /* månens kant */
+    
+    &:before { /* In light mode - switch to dark */
+        position: absolute;
+        content: "";
+        height: 1.3em;
+        width: 1.3em;
+        border-radius: 50%;
+        left: 10%;
+        bottom: 15%;
+        box-shadow: inset 8px -4px 0px 0px #A34B14; /* månen */
+        background: #1b1b1b; /* månens baggrund - skal væred det samme som pillen */
+        transition: .5s;
     }
+}
+
+.theme-toggle:checked + .slider { /* In dark mode - switch to light */
+    background-color: #4ebbff; /* pillens baggrund in dark mode */
+    border: #FFF4E4 solid 2px; /* månens kant */
+}
+  
+.theme-toggle:checked + .slider:before {
+    transform: translateX(100%);
+    box-shadow: inset 15px -4px 0px 15px #d5c000; /* solen */
 }
 
 @media screen and (min-width: 768px) {
@@ -173,17 +179,18 @@ header {
         grid-template-rows: 8dvh;
         align-content: center;
         justify-content: center;
+        width: 100dvw;
     }
-
+    
     #logo {
         grid-area: 1 / 1 / 2 / 2;
-        padding: 1% 0 1% 1%;
+        padding: 1%;
     }
-
-    .toggle { /* tre barer */
+    
+    .toggle, .mobile-switch {
         display: none;
     }
-
+    
     .menu-context {
         grid-area: 1 / 1 / 2 / 4;
         display: grid;
@@ -191,25 +198,126 @@ header {
         grid-template-rows: 1fr;
         height: 100%;
         width: 100%;
-        background-color: transparent;
-
+        justify-content: center;
+        
         & ul {
             grid-area: 1 / 2 / 1 / 3;
             margin: 0;
             display: flex;
-        }
-
-        & .switch {
-            display: none;
-            /* margin: 0 50px 0 0;
-            grid-area: 1 / 3 / 1 / 4;
-            align-self: center;
-            justify-self: center; */
+            justify-content: center;
+            height: 100%;
+            
+            & li {
+                margin: 0 1rem;
+                height: fit-content;
+                
+                & a { 
+                    border-radius: 1rem;
+                    font-size: calc(1rem + 1vh);
+                    transition: background-color .3s, box-shadow .3s, color .3s, font-size .3s, font-weight .3s, height .3s;  
+                    
+                    &:hover {
+                        background-color: var(--light);
+                        box-shadow: 0px 12px 23px -4px rgba(0,0,0,0.47), 0px 0px 40px -4px rgba(0,0,0,0.31);
+                        border-radius: 1rem;
+                        color: var(--dark);
+                        font-size: calc(1.2rem + 1vh);
+                        font-weight: bold;
+                        transition: background-color .3s, box-shadow .3s, color .3s, font-size .3s, font-weight .3s, height .3s;  
+                    }
+                }
+            }
         }
     }
+}
 
-    .menu-context .switch {
-        grid-area: 1 / 4 / 2 / 5;
-        margin: 0;
+.desktop-switch {
+    display: none;
+}
+
+.settings-container {
+    grid-area: 1 / 3 / 2 / 4;
+    justify-self: end;
+    display: grid;
+    grid-template-columns: auto 8dvh;
+    grid-template-rows: 8dvh auto;
+    height: fit-content;
+    overflow: hidden;
+    
+    & .settings-menu {
+        width: 0;
+        height: 0;
+        transition: width .3s, height .3s;
+    }
+    
+    & .settings-menu>ul, .settings-menu>ul>li {
+        opacity: 0;
+        transition: opacity .4s;
+    }
+    
+    & #settings {
+        align-self: center;
+        justify-self: end;
+        grid-area: 1 / 2 / 2 / 3;
+        height: 8dvh;
+        padding: 2dvh;
+        transition: transform .4s;
+
+        &:hover, .settings-container:hover & {
+            transform: rotate(90deg);
+            transition: transform .6s;
+        }
+        
+        &:hover + .settings-menu, &+.settings-menu:hover {
+            grid-area: 2 / 1 / 3 / 3;
+            width: 100%;
+            height: 100%;
+            justify-self: end;
+            justify-content: right;
+            background-color: var(--dark);
+            border-radius: 0 0 0 0.5rem;
+            transition: width .4s, height .5s;
+            /* box-shadow: ; */
+
+            & ul {
+                color: var(--light);
+                width: fit-content;
+                margin: 0 0 0 3dvh;
+                opacity: 1;
+                transition: opacity .8s;
+
+                & li {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    text-align: right;
+                    align-items: flex-end;
+                    justify-items: center;
+                    cursor: pointer;
+                    padding: 0.15rem 2dvh;
+                    border-radius: 0.5rem 0 0 0.5rem;
+                    opacity: 1;
+                    transition: opacity .8s;
+                    padding-bottom: 0.5rem;
+
+                    &:hover {
+                        background-color: var(--light);
+                        color: var(--dark);
+                    }
+                    
+                    &:has(>.desktop-switch) {
+                        background-color: transparent;
+                        padding-bottom: 1rem;
+                    }
+                    
+                    & .desktop-switch {
+                        position: relative;    
+                        display: flex;  
+                        width: 3.5em;
+                        height: 2em;
+                    }  
+                }
+            }
+        }
     }
 }

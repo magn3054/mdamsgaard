@@ -1,40 +1,47 @@
 "use strict";
 
-const toggleCheckbox = document.querySelector('.theme-toggle'); // Get the checkbox input
+const toggleMobileCheckbox = document.getElementById('mobile-toggle'); // Get the mobile checkbox input
+const toggleDesktopCheckbox = document.getElementById('desktop-toggle'); // Get the desktop checkbox input
 const logo = document.getElementById('logo'); // Get the logo element
+const settings = document.getElementById('settings'); // Get the settings element
 const currentTheme = localStorage.getItem('theme');
 
 // Function to update the logo based on the theme
-function updateLogo(theme) {
+function updateSVG(theme) {
     if (theme === 'dark') {
         logo.src = 'img/md_logo_dark.svg';
+        settings.src = 'img/settings_dark.svg';
     } else {
         logo.src = 'img/md_logo_light.svg';
+        settings.src = 'img/settings_light.svg';
     }
+}
+
+// Function to apply a theme
+function applyTheme(theme) {
+    document.documentElement.setAttribute('theme', theme);
+    localStorage.setItem('theme', theme); // Save the theme to localStorage
+    updateSVG(theme);
+
+    // Sync both checkboxes to the same theme state
+    const isDarkTheme = theme === 'dark';
+    toggleMobileCheckbox.checked = isDarkTheme;
+    toggleDesktopCheckbox.checked = isDarkTheme;
 }
 
 // Apply the saved theme on load
 if (currentTheme) {
-    document.documentElement.setAttribute('theme', currentTheme);
-    // Set the checkbox state based on the saved theme
-    toggleCheckbox.checked = currentTheme === 'dark';
-    // Update the logo based on the current theme
-    updateLogo(currentTheme);
+    applyTheme(currentTheme); // Set theme based on saved state
 } else {
-    // If no theme is saved, default to 'light' theme
-    document.documentElement.setAttribute('theme', 'light');
-    // Set the default logo for light theme
-    updateLogo('light');
+    applyTheme('light'); // Default to light theme
 }
 
-// Toggle between light and dark modes based on checkbox state
-toggleCheckbox.addEventListener('change', () => {
-    const theme = toggleCheckbox.checked ? 'dark' : 'light';
+// Add a single event listener for both checkboxes
+function toggleTheme(event) {
+    const theme = event.target.checked ? 'dark' : 'light'; // Determine the theme based on the checkbox that triggered the event
+    applyTheme(theme); // Apply the chosen theme and sync both switches
+}
 
-    // Apply the new theme
-    document.documentElement.setAttribute('theme', theme);
-    localStorage.setItem('theme', theme); // Save the preference in localStorage
-
-    // Update the logo based on the new theme
-    updateLogo(theme);
-});
+// Attach the event listeners for both switches
+toggleMobileCheckbox.addEventListener('change', toggleTheme);
+toggleDesktopCheckbox.addEventListener('change', toggleTheme);
