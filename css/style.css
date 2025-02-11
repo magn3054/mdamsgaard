@@ -1,0 +1,308 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    /* Width of the scrollbar */
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    /* Track background (lighter to match the dark gradient background) */
+&::-webkit-scrollbar-track {
+    background: #0A192F; /* A medium-light blue */
+    border-radius: 0 4px 4px 0;
+}
+
+/* Drag-handle (darker for contrast) */
+&::-webkit-scrollbar-thumb {
+    background: #23395B; /* Dark blue, blending with the background */
+    border-radius: 4px;
+}
+
+/* Handle on hover (slightly lighter for visibility) */
+&::-webkit-scrollbar-thumb:hover {
+    background: #1A4475;
+}
+
+/* Handle when actively being dragged */
+&::-webkit-scrollbar-thumb:active {
+    background: #1B4F72;
+}
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #0A192F, #112D4E);
+    background: #0a192f;
+    text-align: center;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #64FFDA;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: #64FFDA;
+}
+
+h3 {
+    font-size: 2rem;
+    color: #64FFDA;
+}
+
+h4 {
+    font-size: 1.5rem;
+    color: #e0e0e0;
+}
+
+p {
+    font-size: 1rem;
+    color: #e0e0e0;
+    margin: 0.5rem 0;
+    line-height: 1.25;
+}
+
+img {
+    margin: 1rem;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-image {
+    width: 24rem;
+    height: auto;
+    margin: 1rem;
+    border-radius: 50%;
+    background-image: url('../img/hero.webp');
+    background-position: center;
+    background-size: cover;
+    aspect-ratio: 0.95/1;
+    transition: background-image 0.35s linear;
+    filter: drop-shadow(0px 10px 20px #000000);
+}
+
+.hero-image:hover {
+    background-image: url('../img/hero-hover.webp');
+    transition: background-image 0.25s linear;
+}
+
+.title {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+}
+
+/* CTA Button */
+.cta-button {
+    padding: 0.75rem 1.5rem;
+    margin: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #64FFDA;
+    color: #0A192F;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    box-shadow: 0px 0px 1rem #66ffdb80;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #52e0c6;
+    box-shadow: 0px 0px 20px rgba(100, 255, 218, 0.8);
+    transform: scale(1.05);
+}
+
+/* See more arrow section */
+#arrowContainer {
+    position: sticky;
+    bottom: 0;
+    width: 100vw;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    transition: opacity 0.5s ease;
+}
+
+.arrow {
+    position: absolute;
+    border: solid #64FFDA;
+    border-width: 0 0.25rem 0.25rem 0;
+    padding: 1rem;
+    transform: rotate(45deg);
+    animation: arrowSlide 3s infinite linear;
+}
+
+.delay0 {
+    animation-delay: -0.75s;
+}
+
+.delay1 {
+    animation-delay: -1.5s;
+}
+
+.delay2 {
+    animation-delay: -2.25s;
+}
+
+.delay3 {
+    animation-delay: -3s;
+}
+
+@keyframes arrowSlide {
+    0%, 100% {
+        transform: rotate(45deg) translate(-3rem, -3rem);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.25;
+    }
+    20% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    90% {
+        transform: rotate(45deg) translate(0rem, 0rem);
+        opacity: 0;
+    }
+}
+
+
+
+/* Projects section */
+.projects {
+    margin: 2rem 0;
+}
+
+.section-title {
+    margin: 1rem;
+}
+
+/* Project card grid */
+.project-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* Project card wrapper */
+.project-card {
+    width: 20rem;
+    height: fit-content;
+    border-radius: 0.75rem;
+}
+
+.card-front {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    aspect-ratio: 3/2;
+    background: #112D4E;
+    box-shadow: 0px 0px 10px #64ffda4d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: border-bottom-left-radius 0.5s ease-in-out, border-bottom-right-radius 0.5s ease-in-out;
+    cursor: default;
+}
+
+.project-card:hover .card-front {
+    border-radius: 0.75rem 0.75rem 6px 6px ;
+}
+
+.flip-card-inner {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    padding: 0 0.25rem;
+    transform-style: preserve-3d;
+    transform-origin: top;
+    transform: rotateX(-90deg);
+    transition: transform 0.45s ease-in-out;
+}
+
+.project-card:hover .flip-card-inner {
+    transform: rotateX(0deg);
+}
+
+.flip-card-back {
+    position: relative;
+    width: 100%;
+    max-height: 30rem;
+    overflow-y: auto;
+    backface-visibility: hidden;
+    padding: 1.5rem;
+    background-color: #2980b9;
+    border-radius: 0 0 0.75rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 20px 40px rgba(0, 0, 0, 0.4) inset;
+
+    /* Width of the scrollbar */
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    /* Track baggrund */
+    &::-webkit-scrollbar-track {
+        background: #1b4f72;
+        border-radius: 0 4px 4px 0;
+    }
+
+    /* Drag-handle (the draggable part) */
+    &::-webkit-scrollbar-thumb {
+        background: #74b9ff;
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #dff9fb;
+    }
+
+    &::-webkit-scrollbar-thumb:active {
+        background: #82ccdd;
+    }
+}
+.flip-card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.75rem;
+}
