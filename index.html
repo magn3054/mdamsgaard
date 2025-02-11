@@ -6,19 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/scroll.js"></script>
+    <script src="js/scripts.js" defer></script>
 </head>
 
 <body>
+    <div class="language-dropdown">
+        <button id="langSwitcher"><img class="lang-icon" src="img/icon-lang_dk.svg" alt=""></button>
+        <ul id="langMenu" class="hidden">
+            <li data-lang="da"><img class="lang-select" src="img/dk-flag.svg" alt=""><p class="lang-select-text">Dansk</p></li>
+            <li data-lang="en"><img class="lang-select" src="img/en-flag.svg" alt=""><p class="lang-select-text">English</p></li>
+            <li data-lang="es"><img class="lang-select" src="img/es-flag.svg" alt=""><p class="lang-select-text">Español</p></li>
+            <li data-lang="pt"><img class="lang-select" src="img/br_pt-flag.svg" alt=""><p class="lang-select-text">Português</p></li>
+        </ul>
+    </div>
+
     <main>
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-image">
                 <img src="" alt="">
             </div>
-            <h1 class="title">Velkommen til min portfolio</h1>
-            <p class="subtitle">Frontend-udvikler | React | UX/UI Design</p>
-            <button class="cta-button">Se mine projekter</button>
+            <h1 class="title" data-key="heroTitle">Velkommen til min portfolio</h1>
+            <p class="subtitle" data-key="heroSubtitle">Frontend-udvikler | React | UX/UI Design</p>
+            <button class="cta-button" data-key="heroCTA">Se mine projekter</button>
         </section>
 
         <!-- See More Section -->
@@ -31,47 +41,46 @@
 
         <!-- Projects Section -->
         <section class="projects">
-            <h2 class="section-title">Udvalgte Projekter</h2>
+            <h2 class="section-title" data-key="projectsSectionTitle">Udvalgte Projekter</h2>
             <div class="project-grid">
                 <div class="project-card">
                     <div class="card-front">
-                        <h3>Projekt 1</h3>
+                        <h3 data-key="projectsProject1">Projekt 1</h3>
                     </div>
                     <div class="flip-card">
                         <div class="flip-card-inner">
                             <div class="flip-card-back">
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit delectus minus debitis? Consectetur, enim corrupti quo id hic dolorum vel doloremque harum amet? Voluptatibus esse quam tempora molestiae. Veniam, inventore. Nobis modi rerum at, nesciunt atque ea amet culpa aspernatur totam ratione harum impedit esse a quaerat non consectetur! Voluptate maxime similique porro illo architecto, aperiam aliquam deserunt mollitia inventore, voluptatem iste in exercitationem labore nihil! Rerum nesciunt ducimus, suscipit sapiente blanditiis, expedita eveniet quidem, repellat nihil nam nulla. Corporis quis debitis quod rem magnam doloremque magni ducimus, sed facere obcaecati aliquid reprehenderit quia non nobis ipsum amet voluptatibus id?</p>
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit delectus minus debitis? Consectetur, enim corrupti quo id hic dolorum vel doloremque harum amet? Voluptatibus esse quam tempora molestiae. Veniam, inventore. Nobis modi rerum at, nesciunt atque ea amet culpa aspernatur totam ratione harum impedit esse a quaerat non consectetur! Voluptate maxime similique porro illo architecto, aperiam aliquam deserunt mollitia inventore, voluptatem iste in exercitationem labore nihil! Rerum nesciunt ducimus, suscipit sapiente blanditiis, expedita eveniet quidem, repellat nihil nam nulla. Corporis quis debitis quod rem magnam doloremque magni ducimus, sed facere obcaecati aliquid reprehenderit quia non nobis ipsum amet voluptatibus id?</p>
+                                <p data-key="projectsProject1Description">Description of Project 1</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="card-front">
-                        <h3>Projekt 2</h3>
+                        <h3 data-key="projectsProject2">Projekt 2</h3>
                     </div>
                     <div class="flip-card">
                         <div class="flip-card-inner">
                             <div class="flip-card-back">
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro laudantium accusamus deleniti. Necessitatibus debitis harum, ducimus deleniti omnis non fuga odit perspiciatis atque neque facere reiciendis itaque. Sit amet recusandae rem aliquam perferendis doloremque quia corporis, odio alias voluptate excepturi! Suscipit impedit atque saepe quam enim, sequi ipsa soluta ab alias deserunt quisquam asperiores ad beatae, fugiat rem cupiditate repudiandae vero amet voluptates fugit. Inventore quo quod, iure quas tempore earum. At suscipit nihil molestias possimus, voluptas eveniet dignissimos necessitatibus et, esse ducimus deleniti deserunt?</p>
+                                <p data-key="projectsProject2Description">Description of Project 2</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="card-front">
-                        <h3>Projekt 3</h3>
+                        <h3 data-key="projectsProject3">Projekt 3</h3>
                     </div>
                     <div class="flip-card">
                         <div class="flip-card-inner">
                             <div class="flip-card-back">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, iusto.</p>
+                                <p data-key="projectsProject3Description">Description of Project 3</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-    </main>
+    </main>    
 </body>
 </html>
