@@ -4,7 +4,17 @@
     "heroCTA": "Se mine projekter",
     
     "projectsSectionTitle": "Udvalgte Projekter",
-    "projectsProject1": "Nippon",
-    "projectsProject2": "Aarhus Havnerundfart",
-    "projectsProject3": "Storytelling"
+    "Project1": "Nippon",
+    "Project1Description1": "Som en del af et designprojekt udviklede og designede jeg sammen med mit team en fiktiv webshop, nippon.mdamsgaard.dk, der fokuserede på japanske måltidskasser til unge mellem 23-35 år. Formålet var at skabe en brugervenlig, økonomisk tilgængelig løsning, der gjorde det nemt at lave autentiske japanske retter uden besværlige indkøb", 
+    "Project1Description2": "Vi arbejdede ud fra double diamond-modellen, hvor vi gennemgik research, analyse, ideudvikling og implementering. Vi undersøgte markedet for måltidskasser, udførte målgruppeinterviews og udviklede en Value Proposition Canvas for at sikre, at designet matchede brugernes behov.",
+    "Project1Description3": "Projektet gav mig erfaring med UX/UI-design, prototyping i Figma, frontend-udvikling med JavaScript samt brugertests og validering. Det var en lærerig proces, hvor vi fik bekræftet, hvor vigtigt det er at balancere design, funktionalitet og brugerbehov i en digital løsning.",
+    
+    "Project2": "Aarhus Havnerundfart",
+    "Project2Description1": "I dette projekt udviklede og redesignede mit team og jeg en ny, mobiloptimeret platform for Aarhus Havnerundfart. Formålet var at forbedre deres online tilstedeværelse og gøre det nemmere for både lokale og turister at planlægge og deltage i sejlture i Aarhus.", 
+    "Project2Description2": "Vores løsning fokuserede på en mobile-first tilgang, hvor vi samlede al nødvendig information ét sted og gjorde siden mere brugervenlig. Vi udviklede en Value Proposition Canvas (VPC) for at sikre, at vores design imødekom målgruppens behov.",
+    "Project2Description3": "vi anvendte responsivt design for at sikre en optimal brugeroplevelse på alle enheder. Vi implementerede media queries, flexbox-layouts og en burger-menu for mobilnavigation. Tekststørrelser blev justeret med clamp()-funktionen, og vi optimerede UI-elementer, så siden forblev letlæselig, brugervenlig og funktionel på tværs af skærmstørrelser.",
+    
+
+
+    "Project3": "Storytelling"
 }
