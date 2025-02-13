@@ -10,32 +10,33 @@
     }
 
     /* Track background (lighter to match the dark gradient background) */
-&::-webkit-scrollbar-track {
-    background: #0A192F; /* A medium-light blue */
-    border-radius: 0 4px 4px 0;
-}
+    &::-webkit-scrollbar-track {
+        background: #0A192F;
+        /* A medium-light blue */
+        border-radius: 0 4px 4px 0;
+    }
 
-/* Drag-handle (darker for contrast) */
-&::-webkit-scrollbar-thumb {
-    background: #23395B; /* Dark blue, blending with the background */
-    border-radius: 4px;
-}
+    /* Drag-handle (darker for contrast) */
+    &::-webkit-scrollbar-thumb {
+        background: #23395B;
+        /* Dark blue, blending with the background */
+        border-radius: 4px;
+    }
 
-/* Handle on hover (slightly lighter for visibility) */
-&::-webkit-scrollbar-thumb:hover {
-    background: #1A4475;
-}
+    /* Handle on hover (slightly lighter for visibility) */
+    &::-webkit-scrollbar-thumb:hover {
+        background: #1A4475;
+    }
 
-/* Handle when actively being dragged */
-&::-webkit-scrollbar-thumb:active {
-    background: #1B4F72;
-}
+    /* Handle when actively being dragged */
+    &::-webkit-scrollbar-thumb:active {
+        background: #1B4F72;
+    }
 }
 
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(to bottom, #0A192F, #112D4E);
-    background: #0a192f;
     text-align: center;
     overflow-x: hidden;
     display: flex;
@@ -101,7 +102,7 @@ img {
     background-size: cover;
     aspect-ratio: 0.95/1;
     transition: background-image 0.35s linear;
-    filter: drop-shadow(0px 10px 20px #000000);
+    filter: drop-shadow(0px 10px 20px #000000) brightness(1.35) saturate(1.25);
 }
 
 .hero-image:hover {
@@ -139,12 +140,76 @@ img {
     transform: scale(1.05);
 }
 
-#langSelector {
-    position: sticky;
+/* Dropdown language container */
+.language-dropdown {
+    position: fixed;
     align-self: flex-end;
+    display: flex;
+    flex-direction: column;
     top: 1rem;
     right: 1rem;
     z-index: 100;
+}
+
+#langSwitcher {
+    all: unset;
+    background: none;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.3s ease-in-out;
+    align-self: flex-end;
+}
+
+.lang-icon {
+    width: 4rem;
+    margin: 0.25rem;
+    margin-bottom: 0;
+    filter: drop-shadow(1.5px 1.5px 0 #000);
+}
+
+#langSwitcher:hover .lang-icon,
+#langSwitcher:focus .lang-icon {
+    filter: drop-shadow(0.5px 0.5px 0 #fff);
+}
+
+#langMenu {
+    position: relative;
+    align-self: flex-end;
+    background-color: #64FFDA;
+    list-style: none;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    width: 8rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+#langMenu li {
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.lang-select {
+    width: 4rem;
+    margin: 0.25rem;
+    margin-bottom: 0;
+}
+
+.lang-select-text {
+    color: #0A192F;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+#langMenu li:hover {
+    background-color: #52e0c6;
+}
+
+/* Show menu when active */
+#langMenu.show {
+    display: block;
 }
 
 /* See more arrow section */
@@ -186,19 +251,25 @@ img {
 }
 
 @keyframes arrowSlide {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: rotate(45deg) translate(-3rem, -3rem);
         opacity: 0;
     }
+
     10% {
         opacity: 0.25;
     }
+
     20% {
         opacity: 1;
     }
+
     50% {
         opacity: 1;
     }
+
     90% {
         transform: rotate(45deg) translate(0rem, 0rem);
         opacity: 0;
@@ -249,7 +320,7 @@ img {
 }
 
 .project-card:hover .card-front {
-    border-radius: 0.75rem 0.75rem 6px 6px ;
+    border-radius: 0.75rem 0.75rem 6px 6px;
 }
 
 .flip-card-inner {
@@ -271,17 +342,106 @@ img {
     position: relative;
     width: 100%;
     max-height: 30rem;
-    overflow-y: auto;
     backface-visibility: hidden;
-    padding: 1.5rem;
     background-color: #2980b9;
     border-radius: 0 0 0.75rem 0.75rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    text-align: left;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 20px 40px rgba(0, 0, 0, 0.4) inset;
+    overflow-x: hidden;
+
+    
+}
+
+/* Style the Image Used to Trigger the Modal */
+.project-img {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0.75rem;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.project-img:hover {
+    opacity: 0.7;
+}
+
+/* The Modal */
+.modal {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+}
+
+/* Modal Content (image) */
+.modal-content {
+    display: block;
+    width: 90%;
+    aspect-ratio: 16/9;
+    max-height: 95dvh;
+}
+
+/* Caption of Modal Image */
+#caption {
+    position: absolute;
+    bottom: 0;
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    color: #e0e0e0;
+    margin: 1.5rem;
+    font-weight: bold;
+}
+
+/* Add Animation */
+.modal-content,
+#caption {
+    animation: zoom 0.6s;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    left: 35px;
+    color: #e0e0e0;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #e0e0e0;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.project-description {
+    margin: 0 .75rem 1rem 1.5rem;
+    overflow-y: auto;
+    text-align: left;
 
     /* Width of the scrollbar */
     &::-webkit-scrollbar {
@@ -291,7 +451,7 @@ img {
     /* Track baggrund */
     &::-webkit-scrollbar-track {
         background: #1b4f72;
-        border-radius: 0 4px 4px 0;
+        border-radius: 4px;
     }
 
     /* Drag-handle (the draggable part) */
@@ -308,93 +468,11 @@ img {
         background: #82ccdd;
     }
 }
-.flip-card-back img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 0.75rem;
-}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Dropdown container */
-.language-dropdown {
-    position: fixed;
+.project-link {
+    margin: 0 1.5rem 1rem 1.5rem;
+    padding: 0.5rem 1rem;
     align-self: flex-end;
-    display: flex;
-    flex-direction: column;
-    top: 1rem;
-    right: 1rem;
-    z-index: 100;
-}
-
-#langSwitcher {
-    all: unset;
-    background: none;
-    cursor: pointer;
-    border-radius: 50%;
-    transition: all 0.3s ease-in-out;
-    align-self: flex-end;
-}
-
-.lang-icon {
-    width: 4rem;
-    margin: 0.25rem;
-    margin-bottom: 0;
-    filter: drop-shadow(1.5px 1.5px 0 #000);
-}
-
-#langSwitcher:hover .lang-icon, #langSwitcher:focus .lang-icon {
-    filter: drop-shadow(0.5px 0.5px 0 #fff);
-}
-
-#langMenu {
-    position: relative;
-    align-self: flex-end;
-    background-color: #64FFDA;
-    list-style: none;
-    padding: 0.5rem;
-    margin: 0.25rem 0;
-    width: 8rem;
-    border-radius: 0.75rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    display: none;
-}
-
-#langMenu li {
-    cursor: pointer;
-    border-radius: 0.25rem;
-    transition: all 0.2s ease-in-out;
-}
-
-.lang-select {
-    width: 4rem;
-    margin: 0.25rem;
-    margin-bottom: 0;
-} 
-
-.lang-select-text {
-    color: #0A192F;
-    font-weight: bold;
-    margin-top: 0;
-}
-
-#langMenu li:hover {
-    background-color: #52e0c6;
-}
-
-/* Show menu when active */
-#langMenu.show {
-    display: block;
+    box-shadow: none;
+    text-decoration: underline;
 }
