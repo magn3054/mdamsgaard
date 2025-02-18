@@ -1,141 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
-
-.modal-img {
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.modal-img:hover {opacity: 0.7;}
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; 
-  z-index: 1; 
-  padding-top: 100px; 
-  left: 0;
-  top: 0;
-  width: 100%; 
-  height: 100%; 
-  overflow: auto; 
-  background-color: rgba(0,0,0,0.9);
-}
-
-/* Modal Content (image) */
-.modal-content {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-}
-
-/* Caption of Modal Image */
-#caption {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-  text-align: center;
-  color: #ccc;
-  padding: 10px 0;
-  height: 150px;
-}
-
-/* Add Animation */
-.modal-content, #caption {  
-  animation: zoom 0.6s;
-}
-
-@keyframes zoom {
-  from {transform:scale(0)} 
-  to {transform:scale(1)}
-}
-
-/* The Close Button */
-.close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-  color: #bbb;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
-  .modal-content {
-    width: 100%;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webcam Person Segmentation</title>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
 </head>
 <body>
+  <h2>Webcam Person Segmentation</h2>
+  <video id="webcam" width="640" height="480" autoplay></video>
+  <canvas id="output" width="640" height="480"></canvas>
+  
+  <script>
+    // Step 1: Access the webcam
+    async function setupWebcam() {
+      const videoElement = document.getElementById('webcam');
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      videoElement.srcObject = stream;
+    }
 
-<h2>Enhanced Image Modal</h2>
-<p>Click on any image to view it in a modal.</p>
+    // Step 2: Set up MediaPipe Selfie Segmentation
+    const selfieSegmentation = new SelfieSegmentation.SelfieSegmentation({
+      locateFile: (file) => {
+        return `https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${file}`;
+      },
+    });
 
-<img class="modal-img" src="img_snow.jpg" alt="Snowy Mountain" style="width:100%;max-width:300px">
-<img class="modal-img" src="img_forest.jpg" alt="Green Forest" style="width:100%;max-width:300px">
-<img class="modal-img" src="img_city.jpg" alt="City Lights" style="width:100%;max-width:300px">
+    selfieSegmentation.setOptions({
+      modelSelection: 1, // 1 = segmentation for background removal, 0 = simple segmentation
+      selfieMode: true, // Ensure it's set for front-facing cameras
+      segmentPerson: true, // Isolate the person
+    });
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="img01">
-  <div id="caption"></div>
-</div>
+    // Step 3: Process video frames and apply segmentation
+    function onResults(results) {
+      const canvasElement = document.getElementById('output');
+      const canvasCtx = canvasElement.getContext('2d');
+      
+      // Clear previous frame
+      canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+      
+      // Draw the segmented person on canvas (remove background)
+      canvasCtx.drawImage(results.segmentationMask, 0, 0, canvasElement.width, canvasElement.height);
+      
+      // Overlay person on top of the background (for demo purposes)
+      canvasCtx.globalCompositeOperation = 'source-in';
+      canvasCtx.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
+    }
 
-<script>
-// Get the modal
-var modal = document.getElementById("myModal");
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
+    // Step 4: Start the segmentation process
+    async function startSegmentation() {
+      await setupWebcam();
+      
+      // Set up the video and capture frames
+      const videoElement = document.getElementById('webcam');
+      videoElement.onloadeddata = () => {
+        const camera = new Camera(videoElement, {
+          onFrame: async () => {
+            await selfieSegmentation.send({ image: videoElement });
+          },
+          width: 640,
+          height: 480
+        });
+        camera.start();
+      };
+    }
 
-// Get all images with class "modal-img"
-var images = document.querySelectorAll(".modal-img");
-
-// Loop through images to add click event
-images.forEach(img => {
-  img.onclick = function() {
-    modal.style.display = "block";
-    modalImg.src = this.src;
-    captionText.innerHTML = this.alt;
-  };
-});
-
-// Close modal when clicking on close button
-document.querySelector(".close").onclick = function() {
-  modal.style.display = "none";
-};
-
-// Close modal when clicking outside the image
-modal.onclick = function(event) {
-  if (event.target === modal) {
-    modal.style.display = "none";
-  }
-};
-
-// Close modal with Esc key
-document.addEventListener("keydown", function(event) {
-  if (event.key === "Escape") {
-    modal.style.display = "none";
-  }
-});
-</script>
-
+    // Initialize the camera and start segmentation
+    startSegmentation();
+  </script>
 </body>
 </html>

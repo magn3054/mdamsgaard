@@ -94,4 +94,27 @@ document.addEventListener("DOMContentLoaded", () => {
             arrowContainer.style.opacity = window.scrollY > 50 ? "0" : "1";
         }
     });
+
+    // Intersection Observer to show hidden elements
+    const hiddenElements = document.querySelectorAll(".hidden");
+    const observer = new IntersectionObserver(
+        (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.8 }
+    );
+
+    hiddenElements.forEach(element => observer.observe(element));
 });
+
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+    }
+}

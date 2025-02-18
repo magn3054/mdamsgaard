@@ -1,25 +1,23 @@
 // Get the modal
-var modal = document.getElementById("modalContainer");
-var modalImg = document.getElementById("selectedImgModal");
-var captionText = document.getElementById("caption");
+const modal = document.getElementById("modalContainer");
+const modalImg = document.getElementById("selectedImgModal");
+const captionText = document.getElementById("caption");
 
 // Get all images with class "project-img"
-var images = document.querySelectorAll(".project-img");
+let images = document.querySelectorAll(".project-img");
 
 // Loop through images to add click event
 images.forEach(img => {
     img.onclick = function () {
         modal.style.display = "flex";
         // Load high-res image from data attribute
-        var highUrlSrc = this.getAttribute("data-url");
+        let highUrlSrc = this.getAttribute("data-url");
         if (highUrlSrc) {
             modalImg.src = highUrlSrc;
-            modalImg.loading = "lazy"; // Lazy load the image
+            modalImg.loading = "lazy"; // Lazy load the iframe
         } else {
-            modalImg.src = this.src; // Fallback if no high-res version exists
+            modalImg.src = this.src; // Fallback if no iframe link version exists
         }
-
-        // captionText.innerHTML = this.alt;
     };
 });
 
@@ -41,3 +39,4 @@ document.addEventListener("keydown", function (event) {
         modal.style.display = "none";
     }
 });
+

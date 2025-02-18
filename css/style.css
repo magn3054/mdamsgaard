@@ -3,45 +3,44 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
-    /* Width of the scrollbar */
-    &::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    /* Track background (lighter to match the dark gradient background) */
-    &::-webkit-scrollbar-track {
-        background: #0A192F;
-        /* A medium-light blue */
-        border-radius: 0 4px 4px 0;
-    }
-
-    /* Drag-handle (darker for contrast) */
-    &::-webkit-scrollbar-thumb {
-        background: #23395B;
-        /* Dark blue, blending with the background */
-        border-radius: 4px;
-    }
-
-    /* Handle on hover (slightly lighter for visibility) */
-    &::-webkit-scrollbar-thumb:hover {
-        background: #1A4475;
-    }
-
-    /* Handle when actively being dragged */
-    &::-webkit-scrollbar-thumb:active {
-        background: #1B4F72;
-    }
 }
 
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #0A192F, #112D4E);
+    /* background: linear-gradient(to bottom, #0A192F, #112Dx4E); */
+    background: linear-gradient(to bottom, #122C54, #215897);
     text-align: center;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+        /* Width of the scrollbar */
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        /* Track background (lighter to match the dark gradient background) */
+        &::-webkit-scrollbar-track {
+            background: #0f284f;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Drag-handle (darker for contrast) */
+        &::-webkit-scrollbar-thumb {
+            background: #00428d;
+            border-radius: 4px;
+        }
+
+        /* Handle on hover (slightly lighter for visibility) */
+        &::-webkit-scrollbar-thumb:hover {
+            background: #1A4475;
+        }
+
+        /* Handle when actively being dragged */
+        &::-webkit-scrollbar-thumb:active {
+            background: #205490;
+        }
 }
 
 main {
@@ -82,6 +81,40 @@ img {
     margin: 1rem;
 }
 
+.appear {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.fly-up {
+    opacity: 0;
+    transform: translateY(500px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.from-left {
+    opacity: 0;
+    transform: translateX(-10rem);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.from-right {
+    opacity: 0;
+    transform: translateX(10rem);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.spin {
+    opacity: 0;
+    transform: rotate(180deg);
+    transition: opacity 0.6s ease-out, transform 0.8s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* Hero Section */
 .hero {
     height: 100vh;
@@ -93,6 +126,7 @@ img {
 }
 
 .hero-image {
+    all: unset;
     width: 24rem;
     height: auto;
     margin: 1rem;
@@ -101,8 +135,9 @@ img {
     background-position: center;
     background-size: cover;
     aspect-ratio: 0.95/1;
+    cursor: pointer;
     transition: background-image 0.35s linear;
-    filter: drop-shadow(0px 10px 20px #000000) brightness(1.35) saturate(1.25);
+    filter: drop-shadow(0px 10px 20px #000000a5) brightness(1.45) saturate(1.25);
 }
 
 .hero-image:hover {
@@ -120,13 +155,18 @@ img {
 }
 
 /* CTA Button */
+.cta-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
 .cta-button {
     padding: 0.75rem 1.5rem;
     margin: 1rem;
     font-size: 1rem;
     font-weight: bold;
     background-color: #64FFDA;
-    color: #0A192F;
+    color: #122C54;
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
@@ -198,7 +238,7 @@ img {
 }
 
 .lang-select-text {
-    color: #0A192F;
+    color: #122C54;
     font-weight: bold;
     margin-top: 0;
 }
@@ -276,11 +316,9 @@ img {
     }
 }
 
-
-
 /* Projects section */
 .projects {
-    margin: 2rem 0;
+    margin: 2rem 0 30rem 0;
 }
 
 .section-title {
@@ -298,17 +336,27 @@ img {
 /* Project card wrapper */
 .project-card {
     width: 20rem;
-    height: fit-content;
+    height: auto;
     border-radius: 0.75rem;
+    position: relative; 
+    margin-bottom: 2rem; 
+    transition: z-index 0.5s ease-in-out;
+    z-index: 1;
 }
 
+.project-card:hover {
+    z-index: 20; 
+}
+
+/* Card front */
 .card-front {
     position: relative;
     z-index: 1;
     width: 100%;
     aspect-ratio: 3/2;
-    background: #112D4E;
+    background: #215897;
     box-shadow: 0px 0px 10px #64ffda4d;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -319,10 +367,7 @@ img {
     cursor: default;
 }
 
-.project-card:hover .card-front {
-    border-radius: 0.75rem 0.75rem 6px 6px;
-}
-
+/* Flip card inner */
 .flip-card-inner {
     position: relative;
     text-align: center;
@@ -334,25 +379,37 @@ img {
     transition: transform 0.45s ease-in-out;
 }
 
-.project-card:hover .flip-card-inner {
-    transform: rotateX(0deg);
-}
-
+/* Flip card back */
 .flip-card-back {
-    position: relative;
+    position: absolute; 
+    top: 100%; 
+    left: 0;
     width: 100%;
-    max-height: 30rem;
+    max-height: 0;
+    overflow: hidden;
     backface-visibility: hidden;
-    background-color: #2980b9;
+    background-color: #3694D3;
     border-radius: 0 0 0.75rem 0.75rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 20px 40px rgba(0, 0, 0, 0.4) inset;
-    overflow-x: hidden;
+    transition: max-height 0.45s ease-in-out;
+    z-index: 10; 
+}
 
-    
+/* Hover effects */
+.project-card:hover .flip-card-inner {
+    transform: rotateX(0deg);
+}
+
+.project-card:hover .flip-card-back {
+    max-height: 30rem; 
+}
+
+.project-card:hover .card-front {
+    border-radius: 0.75rem 0.75rem 6px 6px;
 }
 
 /* Style the Image Used to Trigger the Modal */
@@ -390,6 +447,7 @@ img {
     width: 90%;
     aspect-ratio: 16/9;
     max-height: 95dvh;
+    background-color: #fff;
 }
 
 /* Caption of Modal Image */
@@ -438,41 +496,101 @@ img {
     cursor: pointer;
 }
 
+.project-descriptions {
+    overflow-y: auto;
+    margin-right: 0.75rem;
+
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #1b4f72;
+            border-radius: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #74b9ff;
+            border-radius: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: #dff9fb;
+        }
+
+        &::-webkit-scrollbar-thumb:active {
+            background: #82ccdd;
+        }
+} 
+
 .project-description {
     margin: 0 .75rem 1rem 1.5rem;
     overflow-y: auto;
     text-align: left;
-
-    /* Width of the scrollbar */
-    &::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    /* Track baggrund */
-    &::-webkit-scrollbar-track {
-        background: #1b4f72;
-        border-radius: 4px;
-    }
-
-    /* Drag-handle (the draggable part) */
-    &::-webkit-scrollbar-thumb {
-        background: #74b9ff;
-        border-radius: 4px;
-    }
-
-    &::-webkit-scrollbar-thumb:hover {
-        background: #dff9fb;
-    }
-
-    &::-webkit-scrollbar-thumb:active {
-        background: #82ccdd;
-    }
 }
 
 .project-link {
-    margin: 0 1.5rem 1rem 1.5rem;
-    padding: 0.5rem 1rem;
+    width: fit-content;
+    margin: 1rem 1.5rem 1rem 1.5rem;
+    padding: 0;
     align-self: flex-end;
+}
+
+.project-btn {
+    margin: 0;
+    padding: 0.5rem 1rem;
     box-shadow: none;
     text-decoration: underline;
+}
+
+.kompetencer {
+    margin: 2rem 0 15rem 0;
+}
+
+.komp-logo {
+    width: min-content;
+    margin: 1rem;
+    filter: drop-shadow(1.5px 1.5px 0 #000);
+}
+
+.komp-logo img {
+    width: 10rem;
+}
+
+.komp-logo h4 {
+    justify-self: center;
+    width: max-content;
+}
+
+.komp-logo p {
+    text-align: left;
+    word-break: break-word;
+    hyphens: auto;
+}
+
+.contacts {
+    margin: 2rem 0 15rem 0;
+}
+
+.contact-logo {
+    width: min-content;
+    margin: 1rem;
+    filter: drop-shadow(1.5px 1.5px 0 #000);
+}
+
+.contact-logo img {
+    width: 5rem;
+    color: #e0e0e0;
+    fill: #e0e0e0;
+}
+
+.contact-logo h4 {
+    justify-self: center;
+    width: max-content;
+}
+
+.contact-logo a {
+    /* text-decoration: none; */
+    color: #e0e0e0;
+
 }
