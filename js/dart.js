@@ -117,7 +117,7 @@ function calculateScore(x, y) {
 
     let score = 0;
 
-    // Calculate score based on dart's distance from the center and sector
+    // Calculate score based on dart's distance from the center and sector 
     if (distance < dartboardAreas.bullseye) {
         score = 50; // Bullseye
     } else if (distance >= dartboardAreas.bullseye && distance < dartboardAreas.outerBullseye) {

@@ -91,12 +91,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function typeEffect() {
         if (words.length === 0) return;
-    
+
         const currentWord = words[wordIndex];
         const currentText = currentWord.substring(0, letterIndex);
-    
+
         subtitleElement.textContent = currentText;
-    
+
         if (!isDeleting) {
             if (letterIndex < currentWord.length) {
                 letterIndex++;
@@ -140,11 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-
-
-
-
-
     // Arrow disappears on scroll
     window.addEventListener("scroll", () => {
         if (arrowContainer) {
@@ -168,19 +163,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     // Intersection Observer to show hidden elements
     const hiddenElements = document.querySelectorAll(".hidden");
     const observer = new IntersectionObserver(
@@ -197,16 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     hiddenElements.forEach(element => observer.observe(element));
 });
-
-
-
-
-
-
-
-
-
-
 
 // lightsOut version
 document.addEventListener('mousemove', (e) => {
@@ -233,7 +205,7 @@ function toggleFlashlight() {
         bulb.style.backgroundImage = "url('../img/bulb.svg')"; // Change image to off bulb
         bulb.classList.remove("glow");
         lightsOut.classList.remove("lights-out");
-        flashlight.style.opacity = "0"; // Hide flashlight
+        flashlight.style.opacity = "0"; // Hide flashlight 
     }
 }
 

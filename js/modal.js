@@ -19,7 +19,7 @@ function openModalFromElement(element) {
             modalImg.src = highUrlSrc;
             modalImg.loading = "lazy"; // Lazy load the iframe
         } else {
-            modalImg.src = img.src; // Fallback if no iframe link version exists
+            modalImg.src = img.src; // Fallback if no iframe link version exists 
         }
     }
 }
