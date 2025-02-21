@@ -4,20 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Magnus Portfolio</title>
+    <link id="themeLogo" rel="icon" href="img/md_logo_light.svg">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeLogo = document.getElementById('themeLogo');
+            const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)');
+
+            const updateLogo = (e) => {
+                themeLogo.href = e.matches ? 'img/md_logo_dark.svg' : 'img/md_logo_light.svg';
+            };
+
+            darkThemeMq.addEventListener('change', updateLogo);
+            updateLogo(darkThemeMq);
+        });
+    </script>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/scripts.js" defer></script>
     <script src="js/modal.js" defer></script>
+    <script src="js/dart.js" defer></script>
 </head>
 
 <body>
     <div class="language-dropdown">
+        <div class="lang-text" id="langText">
+            <p data-key="langText1">Prøv på et af</p>
+            <p data-key="langText2">mine andre sprog</p>
+        </div>
         <button type="button" id="langSwitcher"><img class="lang-icon" src="img/icon-lang_dk.svg" alt=""></button>
         <ul id="langMenu">
-            <li data-lang="da"><img class="lang-select" src="img/dk-flag.svg" alt=""><p class="lang-select-text">Dansk</p></li>
-            <li data-lang="en"><img class="lang-select" src="img/en-flag.svg" alt=""><p class="lang-select-text">English</p></li>
-            <li data-lang="es"><img class="lang-select" src="img/es-flag.svg" alt=""><p class="lang-select-text">Español</p></li>
-            <li data-lang="pt"><img class="lang-select" src="img/br_pt-flag.svg" alt=""><p class="lang-select-text">Português</p></li>
+            <li data-lang="da"><img class="lang-select" src="img/dk-flag.svg" alt="">
+                <p class="lang-select-text">Dansk</p>
+            </li>
+            <li data-lang="en"><img class="lang-select" src="img/en-flag.svg" alt="">
+                <p class="lang-select-text">English</p>
+            </li>
+            <li data-lang="es"><img class="lang-select" src="img/es-flag.svg" alt="">
+                <p class="lang-select-text">Español</p>
+            </li>
+            <li data-lang="pt"><img class="lang-select" src="img/br_pt-flag.svg" alt="">
+                <p class="lang-select-text">Português</p>
+            </li>
         </ul>
     </div>
 
@@ -28,20 +55,30 @@
         <h2 id="caption"></h2>
     </div>
 
+    <div class="name-container">
+        <p class="name" id="name">MAGNUS</p>
+    </div>
+
     <main>
         <!-- Hero Section -->
         <section class="hero">
-            <button type="button" class="hero-image" id="heroImage" onclick="scrollToSection('contacts')"> 
-                <img src="" alt="">
-            </button>
-            <h1 class="title" data-key="heroTitle">Velkommen til min portfolio</h1>
-            <p class="subtitle" data-key="heroSubtitle">Frontend-udvikler | React | UX/UI Design</p>
-            <div class="cta-buttons">
-                <button type="button" class="cta-button" data-key="heroCTAproject" onclick="scrollToSection('projects')">Mine projekter</button>
-                <button type="button" class="cta-button" data-key="heroCTAkompetencer" onclick="scrollToSection('kompetencer')">Mine kompetencer</button>
-                <!-- <button type="button" class="cta-button" data-key="heroCTAcontact" onclick="scrollToSection('contacts')">Kontaktoplysninger</button> -->
+            <div id="lightsOut"></div>
+            <div id="bulb"></div>
+            <img id="flashlight" src="img/flashlight.svg" alt="">
+            <div class="morph">
+                <button type="button" class="hero-image" id="heroImage" onclick="window.location.href='#contacts';">
+                    <img src="" alt="">
+                </button>
+                <h1 class="title" data-key="heroTitle">Velkommen til min portfolio</h1>
+                <p class="subtitle" id="heroSubtitle" data-key="heroSubtitle#"></p>
+                <div class="cta-buttons">
+                    <button type="button" class="cta-button" data-key="heroCTAproject"
+                        onclick="window.location.href='#projects';">Mine projekter</button>
+                    <button type="button" class="cta-button" data-key="heroCTAkompetencer"
+                        onclick="window.location.href='#kompetencer';">Mine kompetencer</button>
+                </div>
             </div>
-            </section>
+        </section>
 
         <!-- See More Section -->
         <div id="arrowContainer">
@@ -57,100 +94,158 @@
             <div class="project-grid">
                 <div class="project-card">
                     <div class="card-front">
-                        <h3 data-key="Project1">Nippon</h3>
+                        <h3 class="card-titles" data-key="Project1">Nippon</h3>
+                        <img src="img/nippon.jpg" alt="Test" class="project-img"
+                            data-url="https://nippon.mdamsgaard.dk/">
                     </div>
                     <div class="flip-card">
                         <div class="flip-card-inner">
                             <div class="flip-card-back">
-                                <img src="img/nippon.jpg" alt="Test" class="project-img" data-url="https://nippon.mdamsgaard.dk/">
                                 <div class="project-descriptions">
-                                    <p class="project-description" data-key="Project1Description1">Som en del af et designprojekt udviklede og designede jeg sammen med mit team en fiktiv webshop, nippon.mdamsgaard.dk, der fokuserede på japanske måltidskasser til unge mellem 23-35 år. Formålet var at skabe en brugervenlig, økonomisk tilgængelig løsning, der gjorde det nemt at lave autentiske japanske retter uden besværlige indkøb.</p> 
-                                    <p class="project-description" data-key="Project1Description2">Vi arbejdede ud fra double diamond-modellen, hvor vi gennemgik research, analyse, ideudvikling og implementering. Vi undersøgte markedet for måltidskasser, udførte målgruppeinterviews og udviklede en Value Proposition Canvas for at sikre, at designet matchede brugernes behov.</p>
-                                    <p class="project-description" data-key="Project1Description3">Projektet gav mig erfaring med UX/UI-design, prototyping i Figma, frontend-udvikling med JavaScript samt brugertests og validering. Det var en lærerig proces, hvor vi fik bekræftet, hvor vigtigt det er at balancere design, funktionalitet og brugerbehov i en digital løsning.</p>
+                                    <p class="project-description" data-key="Project1Description1">Som en del af et
+                                        designprojekt udviklede og designede jeg sammen med mit team en fiktiv webshop,
+                                        nippon.mdamsgaard.dk, der fokuserede på japanske måltidskasser til unge mellem
+                                        23-35 år. Formålet var at skabe en brugervenlig, økonomisk tilgængelig løsning,
+                                        der gjorde det nemt at lave autentiske japanske retter uden besværlige indkøb.
+                                    </p>
+                                    <p class="project-description" data-key="Project1Description2">Vi arbejdede ud fra
+                                        double diamond-modellen, hvor vi gennemgik research, analyse, ideudvikling og
+                                        implementering. Vi undersøgte markedet for måltidskasser, udførte
+                                        målgruppeinterviews og udviklede en Value Proposition Canvas for at sikre, at
+                                        designet matchede brugernes behov.</p>
+                                    <p class="project-description" data-key="Project1Description3">Projektet gav mig
+                                        erfaring med UX/UI-design, prototyping i Figma, frontend-udvikling med
+                                        JavaScript samt brugertests og validering. Det var en lærerig proces, hvor vi
+                                        fik bekræftet, hvor vigtigt det er at balancere design, funktionalitet og
+                                        brugerbehov i en digital løsning.</p>
                                 </div>
-                                <a class="project-link" href="https://nippon.mdamsgaard.dk/"><button type="button" class="cta-button project-btn">Nippon</button></a>
+                                <a class="project-link" href="https://nippon.mdamsgaard.dk/"><button type="button"
+                                        class="cta-button project-btn" data-key="Project1CTA">Nippon</button></a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="card-front">
-                        <h3 data-key="Project2">Aarhus Havnerundfart</h3>
+                        <h3 class="card-titles" data-key="Project2">Aarhus Havnerundfart</h3>
+                        <img src="img/havnerundfart.jpg" alt="" class="project-img"
+                            data-url="https://havnerundfart.mdamsgaard.dk/">
                     </div>
                     <div class="flip-card">
                         <div class="flip-card-inner">
                             <div class="flip-card-back">
-                                <img src="img/havnerundfart.jpg" alt="" class="project-img" data-url="https://havnerundfart.mdamsgaard.dk/">
                                 <div class="project-descriptions">
-                                    <p class="project-description" data-key="Project2Description">Description of Project 2</p>
+                                    <p class="project-description" data-key="Project2Description1"></p>
+                                    <p class="project-description" data-key="Project2Description2"></p>
+                                    <p class="project-description" data-key="Project2Description3"></p>
                                 </div>
-                                <a class="project-link" href="https://havnerundfart.mdamsgaard.dk/"><button type="button" class="cta-button project-btn">Havnerundfart</button></a>
+                                <a class="project-link" href="https://havnerundfart.mdamsgaard.dk/"><button
+                                        type="button" class="cta-button project-btn" data-key="Project2CTA">Havnerundfart</button></a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="card-front">
-                        <h3 data-key="Project3">Storytelling</h3>
+                        <h3 class="card-titles" data-key="Project3">Storytelling</h3>
+                        <img src="img/storytelling.gif" alt="" class="project-img"
+                            data-url="https://storytelling.mdamsgaard.dk/">
                     </div>
                     <div class="flip-card">
                         <div class="flip-card-inner">
                             <div class="flip-card-back">
-                                <img src="img/storytelling.gif" alt="" class="project-img" data-url="https://storytelling.mdamsgaard.dk/">
                                 <div class="project-descriptions">
-                                    <p class="project-description" data-key="Project3Description">Description of Project 3</p>
+                                    <p class="project-description" data-key="Project3Description1"></p>
+                                    <p class="project-description" data-key="Project3Description2"></p>
+                                    <p class="project-description" data-key="Project3Description3"></p>
                                 </div>
-                                <a class="project-link" href="https://storytelling.mdamsgaard.dk/"><button type="button" class="cta-button project-btn">Astra i rummet</button></a>
+                                <a class="project-link" href="https://storytelling.mdamsgaard.dk/"><button type="button"
+                                        class="cta-button project-btn" data-key="Project3CTA">Astra i rummet</button></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
+
+        <!-- Dart section -->
+        <section class="dartboard">
+            <h2 class="dart-title" data-key="dartboard">Tag et spil dart</h2>
+            <div id="dartContainer">
+                <canvas id="dartboard"></canvas>
+                <div id="scoreboard">
+                    <h3>Scoreboard</h3>
+                    <ul id="scores"></ul>
+                    <div type="button" class="cta-buttons">
+                        <button type="button" class="cta-button" data-key="dartClearBoard" id="clearBoard">Hent
+                            Pile</button>
+                        <button type="button" class="cta-button" data-key="dartClearScore" id="clearScore">Ren
+                            Tavle</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Kompetencer Section -->
         <section class="kompetencer" id="kompetencer">
-            <h2 data-key="kompetencer">Mine Kompetencer</h2>
+            <h2 data-key="kompetencer" class="hidden appear">Hvad kan jeg?</h2>
             <div class="project-grid">
                 <div class="komp-logo vscode hidden from-left">
                     <img src="img/vscode.svg" alt="">
-                    <h4>HTML, CSS & JS</h4>
-                    <p>Jeg har kodet hjemmesider fra bunden ved hjælp af HTML, CSS og JavaScript, og skabt både interaktive elementer og responsive designs, der sikrer en optimal brugeroplevelse på alle enheder.</p>
+                    <h4 data-key="kompetence1">HTML, CSS & JS</h4>
+                    <p data-key="kompetence1text">Jeg udvikler responsive og interaktive hjemmesider med HTML, CSS og JavaScript. Mit fokus er på
+                        brugervenligt design, hvor funktionalitet og æstetik går hånd i hånd. Jeg skaber dynamiske
+                        elementer, optimerer hastighed og sikrer en problemfri oplevelse på tværs af enheder.</p>
                 </div>
                 <div class="komp-logo wordpress hidden from-left">
                     <img src="img/wordpress.svg" alt="">
-                    <h4>Wordpress</h4>
-                    <p>Jeg er i gang med at udforske WordPress og har allerede bygget enkle testhjemmesider, hvilket viser min vilje til at lære nye værktøjer og tilpasse mig forskellige platforme.</p>
+                    <h4 data-key="kompetence2">Wordpress</h4>
+                    <p data-key="kompetence2text">Jeg er i gang med at udforske WordPress og har allerede bygget enkle testhjemmesider, hvilket
+                        viser min vilje til at lære nye værktøjer og tilpasse mig forskellige platforme.</p>
                 </div>
                 <div class="komp-logo photoshop hidden from-left">
                     <img src="img/photoshop.svg" alt="">
-                    <h4>Photoshop</h4>
-                    <p>Jeg har brugt Photoshop til at skabe visuelt fængende billederedigeringer, herunder præcise farvejusteringer og kompositioner, der forbedrer kvaliteten og udtrykket af både digitale og printmedier.</p>
+                    <h4 data-key="kompetence3">Photoshop</h4>
+                    <p data-key="kompetence3text">Jeg optimerer billeder og grafik med Photoshop og skaber visuelt fængende materialer. Fra præcise
+                        farvejusteringer til avancerede kompositioner sikrer jeg, at billederne er skarpe, harmoniske og
+                        passer perfekt til deres formål.</p>
                 </div>
-                <div class="komp-logo illustrator hidden from-right">
+                <div class="komp-logo illustrator hidden fly-up">
                     <img src="img/illustrator.svg" alt="">
-                    <h4>Illustrator</h4>
-                    <p>Med Illustrator har jeg designet skarpe og skalerbare vektorgrafikker, herunder logoer og ikoner, der styrker brandidentiteter og kommunikerer klart på tværs af platforme.</p>
+                    <h4 data-key="kompetence4">Illustrator</h4>
+                    <p data-key="kompetence4text">Med Illustrator har jeg designet skarpe og skalerbare vektorgrafikker, herunder logoer og ikoner,
+                        der styrker brandidentiteter og kommunikerer klart på tværs af platforme.</p>
                 </div>
                 <div class="komp-logo figma hidden from-right">
                     <img src="img/figma.svg" alt="">
-                    <h4>Figma</h4>
-                    <p>Jeg har udviklet interaktive prototyper til hjemmesider i Figma, både solo og i team-samarbejde, hvilket har sikret en effektiv designproces og en brugervenlig brugeroplevelse.</p>
+                    <h4 data-key="kompetence5">Figma</h4>
+                    <p data-key="kompetence5text">Jeg har udviklet interaktive prototyper til hjemmesider i Figma, både solo og i team-samarbejde,
+                        hvilket har sikret en effektiv designproces og en brugervenlig brugeroplevelse.</p>
+                </div>
+                <div class="komp-logo python hidden from-right">
+                    <img src="img/python.svg" alt="">
+                    <h4 data-key="kompetence6">Python</h4>
+                    <p data-key="kompetence6text">Jeg bruger Python til at udvikle skræddersyede løsninger og automatiseringer. Jeg har erfaring
+                        med at implementere databehandling, algoritmer og skabelse af scripts, der effektiviserer
+                        arbejdsprocesser og optimerer komplekse opgaver.</p>
                 </div>
                 <div class="komp-logo solidworks hidden from-right">
                     <img src="img/solidworks.svg" alt="">
-                    <h4>SolidWorks</h4>
-                    <p>Som en passioneret 3D-entusiast har jeg designet detaljerede 3D-modeller i SolidWorks, der er blevet brugt til 3D-printing, hvilket viser min evne til at kombinere teknisk præcision med kreativitet.</p>
+                    <h4 data-key="kompetence7">SolidWorks</h4>
+                    <p data-key="kompetence7text">Som en passioneret 3D-entusiast har jeg designet detaljerede 3D-modeller i SolidWorks, der er
+                        blevet brugt til 3D-printing. Jeg fokuserer på funktionaliteten når jeg designer til
+                        virkeligheden.</p>
                 </div>
             </div>
         </section>
 
         <section id="contacts" class="contacts">
-            <h2>Få fat i mig</h2>
+            <h2  data-key="contactTitle">Fang mig her</h2>
             <div class="project-grid">
                 <div class="contact-logo linkedin">
                     <img class=" hidden spin" src="img/linkedin.png" alt="LinkedIn logo">
-                    <h4 class="hidden appear"><a href="www.linkedin.com/in/magnus-christiansen">/magnus-christiansen</a></h4>
+                    <h4 class="hidden appear"><a href="www.linkedin.com/in/magnus-christiansen">/magnus-christiansen</a>
+                    </h4>
                 </div>
                 <div class="contact-logo github">
                     <img class=" hidden spin" src="img/github.svg" alt="GitHub logo">
@@ -158,10 +253,34 @@
                 </div>
                 <div class="contact-logo mail">
                     <img class=" hidden spin" src="img/mail.svg" alt="Mail logo">
-                    <h4 class="hidden appear"><a href="magnus@mdamsgaard.dk">magnus@mdamsgaard.dk</a></h4>
+                    <h4 class="hidden appear"><a href="mailto:magnus@mdamsgaard.dk">magnus@mdamsgaard.dk</a></h4>
                 </div>
             </div>
+
+            <div class="contact-container hidden appear">
+                <h2 class="section-title" data-key="formTitle">Fang mig her</h2>
+                <form action="#" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name" data-key="formName">Navn</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" data-key="formEmail">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" data-key="formSubject">Emne</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" data-key="formMessage">Besked</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button"  data-key="formSend">Send</button>
+                </form>
+            </div>
         </section>
-    </main>    
+    </main>
 </body>
+
 </html>

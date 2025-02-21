@@ -1,20 +1,58 @@
 {
+    "langText1": "Prøv på et af",
+    "langText2": "mine andre sprog",
     "heroTitle": "Velkommen til min portfolio",
-    "heroSubtitle": "Frontend-udvikler | React | UX/UI Design",
-    "heroCTA": "Se mine projekter",
+    "heroSubtitle1": "Frontend-udvikler",
+    "heroSubtitle2": "UX/UI Designer",
+    "heroSubtitle3": "Kreativ Multimediedesigner",
+    "heroCTAproject": "Mine projekter",
+    "heroCTAkompetencer": "Mine kompetencer",
     
     "projectsSectionTitle": "Udvalgte Projekter",
+    
     "Project1": "Nippon",
-    "Project1Description1": "Som en del af et designprojekt udviklede og designede jeg sammen med mit team en fiktiv webshop, nippon.mdamsgaard.dk, der fokuserede på japanske måltidskasser til unge mellem 23-35 år. Formålet var at skabe en brugervenlig, økonomisk tilgængelig løsning, der gjorde det nemt at lave autentiske japanske retter uden besværlige indkøb", 
+    "Project1Description1": "Som en del af et designprojekt udviklede og designede jeg sammen med mit team en fiktiv webshop, nippon.mdamsgaard.dk, der fokuserede på japanske måltidskasser til unge mellem 23-35 år. Formålet var at skabe en brugervenlig, økonomisk tilgængelig løsning, der gjorde det nemt at lave autentiske japanske retter uden besværlige indkøb.", 
     "Project1Description2": "Vi arbejdede ud fra double diamond-modellen, hvor vi gennemgik research, analyse, ideudvikling og implementering. Vi undersøgte markedet for måltidskasser, udførte målgruppeinterviews og udviklede en Value Proposition Canvas for at sikre, at designet matchede brugernes behov.",
     "Project1Description3": "Projektet gav mig erfaring med UX/UI-design, prototyping i Figma, frontend-udvikling med JavaScript samt brugertests og validering. Det var en lærerig proces, hvor vi fik bekræftet, hvor vigtigt det er at balancere design, funktionalitet og brugerbehov i en digital løsning.",
+    "Project1CTA": "Nippon",
     
     "Project2": "Aarhus Havnerundfart",
     "Project2Description1": "I dette projekt udviklede og redesignede mit team og jeg en ny, mobiloptimeret platform for Aarhus Havnerundfart. Formålet var at forbedre deres online tilstedeværelse og gøre det nemmere for både lokale og turister at planlægge og deltage i sejlture i Aarhus.", 
     "Project2Description2": "Vores løsning fokuserede på en mobile-first tilgang, hvor vi samlede al nødvendig information ét sted og gjorde siden mere brugervenlig. Vi udviklede en Value Proposition Canvas (VPC) for at sikre, at vores design imødekom målgruppens behov.",
-    "Project2Description3": "vi anvendte responsivt design for at sikre en optimal brugeroplevelse på alle enheder. Vi implementerede media queries, flexbox-layouts og en burger-menu for mobilnavigation. Tekststørrelser blev justeret med clamp()-funktionen, og vi optimerede UI-elementer, så siden forblev letlæselig, brugervenlig og funktionel på tværs af skærmstørrelser.",
+    "Project2Description3": "Vi anvendte responsivt design for at sikre en optimal brugeroplevelse på alle enheder. Vi implementerede media queries, flexbox-layouts og en burger-menu for mobilnavigation. Tekststørrelser blev justeret med clamp()-funktionen, og vi optimerede UI-elementer, så siden forblev letlæselig, brugervenlig og funktionel på tværs af skærmstørrelser.",
+    "Project2CTA": "Havnerundfart",
     
-
-
-    "Project3": "Storytelling"
+    "Project3": "Storytelling",
+    "Project3Description1": "I dette projekt udviklede vi en interaktiv storytelling-løsning for Steno Museet, som havde til formål at engagere og informere børn om solsystemet på en sjov og lærerig måde. Vi valgte at fokusere på Astrotekets store kugle og skabte en ny, børnevenlig løsning med en større skærm og et bredformat, som kunne rumme flere børn ad gangen.",
+    "Project3Description2": "Løsningen, vi udviklede, trækker på den grafiske trend 'Kiddieland,' som er inspireret af barndommens verden med klare farver og finurlige motiver. Vi designede en stor, farverig skærm, der giver børnene mulighed for at deltage i en fælles rejse gennem solsystemet. Ved at bruge visualiseringer og dynamiske elementer er vores mål at gøre læring om solsystemet både sjovt og tilgængeligt.",
+    "Project3Description3": "For at skabe en dybdegående og engagerende oplevelse for børnene, anvendte vi motion graphics, video og interaktive elementer i vores design. Astra, den venlige astronaut, guider børnene gennem de forskellige planeter, mens de får både fakta og animerede illustrationer, der bringer solsystemet til live.",
+    "Project3CTA": "Astra i Rummet",
+    
+    "dartboard": "Tag et spil dart",
+    "dartClearBoard": "Hent Pile",
+    "dartClearScore": "Nulstil Score",
+    
+    "kompetencer": "Mine kompetencer",
+    "kompetence1": "HTML, CSS & JavaScript",
+    "kompetence1text": "Jeg udvikler responsive og interaktive hjemmesider med HTML, CSS og JavaScript. Mit fokus er på brugervenligt design, hvor funktionalitet og æstetik går hånd i hånd. Jeg skaber dynamiske elementer, optimerer hastighed og sikrer en problemfri oplevelse på tværs af enheder.",
+    "kompetence2": "WordPress",
+    "kompetence2text": "Jeg er i gang med at udforske WordPress og har allerede bygget enkle testhjemmesider, hvilket viser min vilje til at lære nye værktøjer og tilpasse mig forskellige platforme.",
+    "kompetence3": "Photoshop",
+    "kompetence3text": "Jeg optimerer billeder og grafik med Photoshop og skaber visuelt fængende materialer. Fra præcise farvejusteringer til avancerede kompositioner sikrer jeg, at billederne er skarpe, harmoniske og passer perfekt til deres formål.",
+    "kompetence4": "Illustrator",
+    "kompetence4text": "Med Illustrator har jeg designet skarpe og skalerbare vektorgrafikker, herunder logoer og ikoner, der styrker brandidentiteter og kommunikerer klart på tværs af platforme.",
+    "kompetence5": "Figma",
+    "kompetence5text": "Jeg har udviklet interaktive prototyper til hjemmesider i Figma, både solo og i team-samarbejde, hvilket har sikret en effektiv designproces og en brugervenlig brugeroplevelse.",
+    "kompetence6": "Python",
+    "kompetence6text": "Jeg bruger Python til at udvikle skræddersyede løsninger og automatiseringer. Jeg har erfaring med at implementere databehandling, algoritmer og skabelse af scripts, der effektiviserer arbejdsprocesser og optimerer komplekse opgaver.",
+    "kompetence7": "SolidWorks",
+    "kompetence7text": "Som en passioneret 3D-entusiast har jeg designet detaljerede 3D-modeller i SolidWorks, der er blevet brugt til 3D-printing. Jeg fokuserer på funktionaliteten når jeg designer til virkeligheden.",
+    
+    "contactTitle": "Fang mig her",
+    "formTitle": "Send mig en besked",
+    "formName": "Navn",
+    "formEmail": "E-mail",
+    "formSubject": "Emne",
+    "formMessage": "Besked",
+    "formSend": "Send besked"
 }

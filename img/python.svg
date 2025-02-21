@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 240 234">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="-20.4" y1="246.1" x2="206.6" y2="50.8" gradientTransform="translate(10.1 146.5) scale(.6 -.6)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5a9fd4"/>
+      <stop offset="1" stop-color="#306998"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="294.3" y1="-67.4" x2="213.3" y2="47.3" gradientTransform="translate(10.1 146.5) scale(.6 -.6)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffd43b"/>
+      <stop offset="1" stop-color="#ffe873"/>
+    </linearGradient>
+  </defs>
+  <!-- Generator: Adobe Illustrator 28.7.5, SVG Export Plug-In . SVG Version: 1.2.0 Build 176)  -->
+  <g>
+    <g id="svg2" inkscape:export-filename="python-logo-only.png">
+      <g>
+        <path id="path1948" class="cls-2" d="M118.6,0c-9.5,0-18.7.9-26.7,2.3-23.6,4.2-27.9,12.9-27.9,29v21.3h55.8v7.1H43.1c-16.2,0-30.4,9.8-34.9,28.3-5.1,21.3-5.4,34.5,0,56.7,4,16.5,13.4,28.3,29.7,28.3h19.2v-25.5c0-18.4,15.9-34.7,34.9-34.7h55.8c15.5,0,27.9-12.8,27.9-28.4V31.3c0-15.1-12.8-26.5-27.9-29C138.1.7,128.2,0,118.6,0ZM88.4,17.1c5.8,0,10.5,4.8,10.5,10.7,0,5.9-4.7,10.6-10.5,10.6-5.8,0-10.5-4.7-10.5-10.6s4.7-10.7,10.5-10.7Z"/>
+        <path id="path1950" class="cls-1" d="M182.6,59.7v24.8c0,19.2-16.3,35.4-34.9,35.4h-55.8c-15.3,0-27.9,13.1-27.9,28.4v53.2c0,15.1,13.2,24,27.9,28.4,17.7,5.2,34.6,6.1,55.8,0,14.1-4.1,27.9-12.3,27.9-28.4v-21.3h-55.8v-7.1h83.7c16.2,0,22.3-11.3,27.9-28.3,5.8-17.5,5.6-34.3,0-56.7-4-16.2-11.7-28.3-27.9-28.3h-21ZM151.2,194.3c5.8,0,10.5,4.7,10.5,10.6s-4.7,10.7-10.5,10.7-10.5-4.8-10.5-10.7,4.7-10.6,10.5-10.6Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

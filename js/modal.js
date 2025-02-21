@@ -5,19 +5,36 @@ const captionText = document.getElementById("caption");
 
 // Get all images with class "project-img"
 let images = document.querySelectorAll(".project-img");
+let imageTitle = document.querySelectorAll(".card-titles");
 
-// Loop through images to add click event
-images.forEach(img => {
-    img.onclick = function () {
+// Function to open modal from image or title
+function openModalFromElement(element) {
+    const card = element.closest('.project-card');
+    const img = card.querySelector('.project-img');
+    if (img) {
         modal.style.display = "flex";
         // Load high-res image from data attribute
-        let highUrlSrc = this.getAttribute("data-url");
+        let highUrlSrc = img.getAttribute("data-url");
         if (highUrlSrc) {
             modalImg.src = highUrlSrc;
             modalImg.loading = "lazy"; // Lazy load the iframe
         } else {
-            modalImg.src = this.src; // Fallback if no iframe link version exists
+            modalImg.src = img.src; // Fallback if no iframe link version exists
         }
+    }
+}
+
+// Loop through images to add click event
+images.forEach(img => {
+    img.onclick = function () {
+        openModalFromElement(this);
+    };
+});
+
+// Loop through card-title (h3) to add click event
+imageTitle.forEach(title => {
+    title.onclick = function () {
+        openModalFromElement(this);
     };
 });
 
@@ -39,4 +56,3 @@ document.addEventListener("keydown", function (event) {
         modal.style.display = "none";
     }
 });
-
