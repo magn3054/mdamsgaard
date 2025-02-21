@@ -111,7 +111,7 @@ function calculateScore(x, y) {
     // Calculate the section index based on angle (0 to 360 degrees)
     let sectionIndex = Math.floor((angle + 9) / 18) % 20;
 
-    // Define the scores for each 18-degree segment (dartboard numbers)
+    // Define the scores for each 18-degree segment (dartboard numbers)s
     const dartboardNumbers = [11, 14, 9, 12, 5, 20, 1, 18, 4, 13, 6, 10, 15, 2, 17, 3, 19, 7, 16, 8];
     let baseScore = dartboardNumbers[sectionIndex];
 

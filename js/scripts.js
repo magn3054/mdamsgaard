@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // LangText disappears on scroll
+    // LangText disappears on scrolls
     window.addEventListener("scroll", () => {
         if (langText) {
             langText.style.opacity = window.scrollY > 50 ? "0" : "1";
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    
+
 
 
     // Intersection Observer to show hidden elements

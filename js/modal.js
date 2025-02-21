@@ -3,7 +3,7 @@ const modal = document.getElementById("modalContainer");
 const modalImg = document.getElementById("selectedImgModal");
 const captionText = document.getElementById("caption");
 
-// Get all images with class "project-img"
+// Get all images with class "project-img"s
 let images = document.querySelectorAll(".project-img");
 let imageTitle = document.querySelectorAll(".card-titles");
 
