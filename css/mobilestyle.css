@@ -1,0 +1,35 @@
+@media only screen and (max-width: 600px) {
+    .name-container, #lightsOut, #bulb, #flashlight, #arrowContainer, .modal, iframe {
+        display: none;
+    }
+
+    .title, .subtitle {
+        max-width: 100dvw;
+    }
+
+    .project-card:hover .card-front {
+        border-radius: 0;
+    }
+
+    .project-card .flip-card-inner {
+        transform: rotateX(0deg);
+    }
+    
+    .project-card .flip-card-back {
+        max-height: 30rem;
+        position: relative;
+    }
+
+    #dartContainer {
+        flex-direction: column;
+    }
+
+    #dartboard {
+        width: 90%;
+    }
+
+    #scoreboard {
+        height: 60dvh;
+    }
+
+}

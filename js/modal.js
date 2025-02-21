@@ -24,35 +24,38 @@ function openModalFromElement(element) {
     }
 }
 
-// Loop through images to add click event
-images.forEach(img => {
-    img.onclick = function () {
-        openModalFromElement(this);
-    };
-});
+// Check screen size before adding event listeners
+if (window.innerWidth >= 600) {
+    // Loop through images to add click event
+    images.forEach(img => {
+        img.onclick = function () {
+            openModalFromElement(this);
+        };
+    });
 
-// Loop through card-title (h3) to add click event
-imageTitle.forEach(title => {
-    title.onclick = function () {
-        openModalFromElement(this);
-    };
-});
+    // Loop through card-title (h3) to add click event
+    imageTitle.forEach(title => {
+        title.onclick = function () {
+            openModalFromElement(this);
+        };
+    });
 
-// Close modal when clicking on close button
-document.querySelector(".close").onclick = function () {
-    modal.style.display = "none";
-};
-
-// Close modal when clicking outside the image
-modal.onclick = function (event) {
-    if (event.target === modal) {
+    // Close modal when clicking on close button
+    document.querySelector(".close").onclick = function () {
         modal.style.display = "none";
-    }
-};
+    };
 
-// Close modal with Esc key
-document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-        modal.style.display = "none";
-    }
-});
+    // Close modal when clicking outside the image
+    modal.onclick = function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    };
+
+    // Close modal with Esc key
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            modal.style.display = "none";
+        }
+    });
+}
